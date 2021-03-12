@@ -15,4 +15,3 @@ def add_gigasecond(your_birthday):
     )
     your_gigasecond = your_birthday + delta
     return your_gigasecond
-
