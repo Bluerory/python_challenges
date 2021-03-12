@@ -1,6 +1,7 @@
 # Python challenges
 
-
+### About  
+I solved these Python challenges during the autonomous learning period of my webdev formation at BeCode.
 
 ### How to run tests locally?
 
