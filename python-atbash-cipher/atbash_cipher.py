@@ -9,7 +9,7 @@
 def encode(input: str):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     reversed_alphabet = alphabet[::-1]
-    input = input.lower()
+    input = input.lower().replace(' ', '')
     print('input: ', input)
     print('input len: ', len(input))
 
@@ -33,24 +33,28 @@ def encode(input: str):
     return encoded_string
 
 
-def decode():
+def decode(encoded_string):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     reversed_alphabet = alphabet[::-1]
-
-    encoded_string = encode(string)
+    encoded_string = encoded_string.replace(' ', '')
     print('///////////////////////////')
-    print('in decode function - result: ', encoded_string)
+    print('in decode function - encoded_string: ', encoded_string)
 
     result = []
 
     for i in range(len(encoded_string)):
         index_in_encoded = reversed_alphabet.find(encoded_string[i])
         result.append(index_in_encoded)
-    print(result)
+    print('result: ', result)
 
     decoded_string = ''
 
     for j in range(len(result)):
         decoded_string = decoded_string + alphabet[result[j]]
 
-    return decoded_string
+    print(decoded_string)
+
+    if len(result) >= 5:
+        return decoded_string
+    else:
+        return decoded_string
