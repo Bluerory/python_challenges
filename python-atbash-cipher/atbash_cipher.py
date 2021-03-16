@@ -3,20 +3,27 @@
 # store indexes used
 # compare to reversed list. use the letters at stored index (reversed alphabet letter)
 #
-# string = 'no'
+string = 'testing123testing'
 #
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+reversed_alphabet = alphabet[::-1]
 
 def encode(input: str):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    reversed_alphabet = alphabet[::-1]
-    input = input.lower().replace(' ', '')
-    print('input: ', input)
+
+    punct_and_space = '''!()-[]{};:'"\, <>./?@#$%^&*_~'''
+    for elem in input:
+        if elem in punct_and_space:
+            input = input.lower().replace(elem, "")
+        else:
+            input = input.lower()
+
+    print('input after lower() and replace(): ', input)
     print('input len: ', len(input))
 
     result = []
 
     for i in range(len(input)):
-
+        print(input[i])
         found_index = alphabet.find(input[i])
 
         result.append(found_index)
@@ -26,16 +33,19 @@ def encode(input: str):
     encoded_string = ''
 
     for j in range(len(result)):
-        encoded_string = encoded_string + reversed_alphabet[result[j]]
-
+        if j % 5 == 0 and j != 0:
+            encoded_string = encoded_string + " " + reversed_alphabet[result[j]]
+            print("added space - index: ", j)
+        else:
+            encoded_string = encoded_string + reversed_alphabet[result[j]]
+        print(j)
     print('encoded_string: ', encoded_string)
 
-    return encoded_string
+    return encoded_string.strip()
 
 
 def decode(encoded_string):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    reversed_alphabet = alphabet[::-1]
+
     encoded_string = encoded_string.replace(' ', '')
     print('///////////////////////////')
     print('in decode function - encoded_string: ', encoded_string)
@@ -58,3 +68,5 @@ def decode(encoded_string):
         return decoded_string
     else:
         return decoded_string
+
+encode(string)
