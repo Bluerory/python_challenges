@@ -24,7 +24,10 @@ def encode(input: str):
 
     for i in range(len(input)):
         print(input[i])
-        found_index = alphabet.find(input[i])
+        if input[i].isdigit():
+            found_index = input[i]
+        else:
+            found_index = alphabet.find(input[i])
 
         result.append(found_index)
 
@@ -36,6 +39,8 @@ def encode(input: str):
         if j % 5 == 0 and j != 0:
             encoded_string = encoded_string + " " + reversed_alphabet[result[j]]
             print("added space - index: ", j)
+        elif type(result[j]) == str:
+            encoded_string = encoded_string + result[j]
         else:
             encoded_string = encoded_string + reversed_alphabet[result[j]]
         print(j)
